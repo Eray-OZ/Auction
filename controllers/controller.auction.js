@@ -31,17 +31,15 @@ export const addItem = async (req, res) => {
             Object.values(newAuction),
             function (err) {
                 if (err) {
-                    res.json(err)
+                    return res.status(500).json({ err });
                 }
-                console.log("Success")
+                db.close()
+                res.redirect("/")
             }
         )
 
 
-        db.close()
 
-
-        res.redirect("/")
 
     } catch (error) {
         res.json(error)

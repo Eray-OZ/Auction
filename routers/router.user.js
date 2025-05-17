@@ -1,5 +1,5 @@
 import express from 'express'
-import { registerAuctioneer } from "../controllers/controller.user.js"
+import { registerAuctioneer, registerCustomer } from "../controllers/controller.user.js"
 
 
 const router = express.Router()
@@ -8,6 +8,9 @@ const router = express.Router()
 
 
 router.post("/registerA", registerAuctioneer)
+
+router.post("/registerC", registerCustomer)
+
 
 
 

@@ -17,6 +17,7 @@ export const connectDB = async (req, res) => {
     });
 
 
+
     queries.map(query => {
         db.run(query, (err) => {
             if (err) {

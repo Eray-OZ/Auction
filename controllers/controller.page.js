@@ -19,6 +19,8 @@ export const getIndexPage = async (req, res) => {
 
     });
 
+    db.close()
+
 
 }
 
@@ -31,5 +33,18 @@ export const getAuctionPage = async (req, res) => {
 export const getRegisterAPage = async (req, res) => {
     res.render('register-auctioneer')
 }
+
+
+
+export const getRegisterCPage = async (req, res) => {
+    res.render('register-customer')
+}
+
+
+
+export const getLoginPage = async (req, res) => {
+    res.render('login')
+}
+
 
 

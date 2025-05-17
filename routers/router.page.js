@@ -1,5 +1,5 @@
 import express from 'express'
-import { getIndexPage, getAuctionPage, getRegisterAPage } from '../controllers/controller.page.js'
+import { getIndexPage, getAuctionPage, getRegisterAPage, getRegisterCPage, getLoginPage } from '../controllers/controller.page.js'
 
 
 
@@ -13,6 +13,11 @@ router.get("/", getIndexPage)
 router.get("/auction", getAuctionPage)
 
 router.get("/registerA", getRegisterAPage)
+
+router.get("/registerC", getRegisterCPage)
+
+router.get("/login", getLoginPage)
+
 
 
 

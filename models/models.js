@@ -26,7 +26,8 @@ export const auction = `CREATE TABLE IF NOT EXISTS Auction (
     description TEXT,
     starting_price REAL NOT NULL,
     current_price REAL NOT NULL,
-    status TEXT DEFAULT 'active',                 
+    status TEXT DEFAULT 'active', 
+    image_url TEXT DEFAULT '',                
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     auctioneer_id INTEGER NOT NULL,
     FOREIGN KEY (auctioneer_id) REFERENCES Auctioneer(id))`

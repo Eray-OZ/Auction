@@ -2,13 +2,13 @@ import sqlite3 from "sqlite3"
 
 
 
+const db = new sqlite3.Database("./database/auction.db");
 
 
 
 export const registerAuctioneer = async (req, res) => {
 
 
-    const db = new sqlite3.Database("./database/auction.db");
 
 
     const newAuctioneer = {
@@ -19,7 +19,6 @@ export const registerAuctioneer = async (req, res) => {
         phone: req.body.phone
     }
 
-    console.log(newAuctioneer)
 
     const insertQuery = `INSERT INTO Auctioneer (name, surname, email, password, phone)
     VALUES (?, ?, ?, ?, ?)`
@@ -31,14 +30,14 @@ export const registerAuctioneer = async (req, res) => {
         Object.values(newAuctioneer),
         function (err) {
             if (err) {
-                res.json(err)
+                return res.status(500).json({ err });
             }
-            console.log("Success")
+            db.close()
+            res.redirect("/")
+
         }
     )
 
-
-    res.redirect("/")
 
 }
 
@@ -51,34 +50,34 @@ export const registerAuctioneer = async (req, res) => {
 export const registerCustomer = async (req, res) => {
 
 
-    const db = new sqlite3.Database("./database/auction.db");
-
-
-    const newAuctioneer = {
+    const newCustomer = {
         username: req.body.username,
         email: req.body.email,
         password: req.body.password,
     }
 
-    console.log(newAuctioneer)
 
-    const insertQuery = `INSERT INTO Auctioneer (username, email, password)
+    const insertQuery = `INSERT INTO Customer (username, email, password)
     VALUES (?, ?, ?)`
-
 
 
     db.run(
         insertQuery,
-        Object.values(newAuctioneer),
+        Object.values(newCustomer),
         function (err) {
             if (err) {
-                res.json(err)
+                return res.status(500).json({ err });
+
             }
-            console.log("Success")
+            db.close()
+            res.redirect("/")
+
         }
     )
 
 
-    res.redirect("/")
+
 
 }
+
+
