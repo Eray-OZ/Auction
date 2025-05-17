@@ -1,0 +1,41 @@
+<%- include ("partials/_header.ejs") %>
+
+
+
+    <% data.map(item=> { %>
+
+
+        Title: <%= item.title %>
+            <br>
+            Category:<%= item.category %>
+                <br>
+                Description:<%= item.description %>
+                    <br>
+                    Starting Price<%= item.starting_price %>
+                        <br>
+                        Current Price<%= item.current_price %>
+                            <br>
+                            Status:<%= item.status %>
+                                <br>
+                                Date:<%= item.created_at %>
+
+                                    <br>
+
+                                    <form method="POST" action="/auction/bid">
+
+                                        <label for="bid">Bid</label>
+                                        <input type="number" name="bid">
+
+
+                                        <button type="submit">Submit</button>
+                                    </form>
+
+
+                                    <br>
+                                    <br>
+
+
+                                    <% }) %>
+
+
+                                        <%- include ("partials/_footer.ejs") %>
